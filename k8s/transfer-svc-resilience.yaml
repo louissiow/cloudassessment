@@ -1,0 +1,97 @@
+# transfer-svc on t1dx-eks-apse5 (same manifest, different replica baseline, on t1dx-eks-apse1).
+# See docs/04-resilience-architecture.md sections 7-8.
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: t1dx-critical
+value: 1000000
+globalDefault: false
+description: "C0 workloads (login, transfer). Evicted last."
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transfer-svc
+  namespace: payments
+  labels:
+    app: transfer-svc
+    owner-team: payments
+    cuj: CUJ-03
+spec:
+  replicas: 6                       # 2 per AZ; any 2 AZs carry peak (N+1)
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: { maxSurge: 25%, maxUnavailable: 0 }
+  selector:
+    matchLabels: { app: transfer-svc }
+  template:
+    metadata:
+      labels: { app: transfer-svc, owner-team: payments, cuj: CUJ-03 }
+    spec:
+      priorityClassName: t1dx-critical
+      serviceAccountName: transfer-svc      # EKS Pod Identity -> least-privilege IAM role
+      terminationGracePeriodSeconds: 45
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector: { matchLabels: { app: transfer-svc } }
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector: { matchLabels: { app: transfer-svc } }
+      containers:
+        - name: transfer-svc
+          image: "<account>.dkr.ecr.ap-southeast-5.amazonaws.com/transfer-svc:2.13.0"  # replicated to ap-southeast-1
+          ports: [{ containerPort: 8080, name: http }]
+          env:
+            - { name: DB_ENDPOINT, value: "RDS Proxy read/write endpoint for t1dx-aurora-apse5 (apse1 overlay uses the apse1 proxy)" }
+            - { name: SERVER_DEADLINE_MS, value: "7000" }
+            - { name: MAX_INFLIGHT_REQUESTS, value: "200" }   # adaptive limit ceiling; shed C3->C1 first
+            - { name: OTEL_SERVICE_NAME, value: transfer-svc }
+            - { name: OTEL_RESOURCE_ATTRIBUTES, value: "owner.team=payments,cuj=CUJ-03" }
+          resources:
+            requests: { cpu: "1", memory: 1536Mi }
+            limits: { memory: 1536Mi }
+          readinessProbe:                   # dependency-light: don't fail readiness when a provider is down
+            httpGet: { path: /health/ready, port: http }
+            periodSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet: { path: /health/live, port: http }
+            periodSeconds: 10
+            failureThreshold: 6
+          lifecycle:
+            preStop:
+              exec: { command: ["sh", "-c", "sleep 15"] }    # drain from NLB before SIGTERM
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: transfer-svc
+  namespace: payments
+spec:
+  minAvailable: 66%
+  selector:
+    matchLabels: { app: transfer-svc }
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: transfer-svc
+  namespace: payments
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: transfer-svc }
+  minReplicas: 6
+  maxReplicas: 30
+  metrics:
+    - type: Resource
+      resource: { name: cpu, target: { type: Utilization, averageUtilization: 60 } }
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies: [{ type: Percent, value: 100, periodSeconds: 30 }]
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies: [{ type: Percent, value: 10, periodSeconds: 60 }]

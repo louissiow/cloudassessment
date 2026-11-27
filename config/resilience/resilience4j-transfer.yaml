@@ -1,0 +1,82 @@
+# Resilience4j policy (Spring Boot application.yaml fragment) for payment-adapter
+# and messaging-adapter on t1dx-eks-apse5 / t1dx-eks-apse1.
+# See docs/04-resilience-architecture.md section 3 and section 5.
+# The 10% retry budget is a token bucket in the shared t1dx client library
+# (Resilience4j Retry has no native budget); it wraps the Retry below.
+resilience4j:
+  circuitbreaker:
+    instances:
+      ext-payment-switch:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 100
+        minimumNumberOfCalls: 20
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 2s
+        slowCallRateThreshold: 50
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        recordExceptions:
+          - java.net.SocketTimeoutException
+          - java.io.IOException
+          - org.springframework.web.client.HttpServerErrorException
+        ignoreExceptions:
+          - org.springframework.web.client.HttpClientErrorException
+      ext-messaging-otp:
+        slidingWindowSize: 100
+        minimumNumberOfCalls: 20
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 1500ms
+        slowCallRateThreshold: 50
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 5
+      ext-messaging-notify:
+        slidingWindowSize: 100
+        minimumNumberOfCalls: 20
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 1500ms
+        waitDurationInOpenState: 60s
+        permittedNumberOfCallsInHalfOpenState: 5
+  retry:
+    instances:
+      ext-payment-switch:
+        maxAttempts: 2                      # 1 retry
+        waitDuration: 100ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        enableRandomizedWait: true          # jitter
+        randomizedWaitFactor: 1.0           # full jitter
+        exponentialMaxWaitDuration: 1s
+        retryExceptions:
+          - java.net.ConnectException       # safe: request never reached provider
+        ignoreExceptions:
+          - java.net.SocketTimeoutException # ambiguous: status query first, never blind retry
+      ext-messaging-notify:
+        maxAttempts: 2
+        waitDuration: 100ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        enableRandomizedWait: true
+        randomizedWaitFactor: 1.0
+        exponentialMaxWaitDuration: 1s
+  bulkhead:
+    instances:
+      ext-payment-switch:
+        maxConcurrentCalls: 50              # per pod; 4+ pods per Region -> >= 200 (Little's Law: 150 TPS x 1.2 s)
+        maxWaitDuration: 0                  # reject immediately, don't queue
+      ext-messaging-otp:
+        maxConcurrentCalls: 30
+        maxWaitDuration: 0
+  timelimiter:
+    instances:
+      ext-payment-switch:
+        timeoutDuration: 3s
+        cancelRunningFuture: true
+      ext-messaging-otp:
+        timeoutDuration: 2s
+        cancelRunningFuture: true
+
+t1dx:
+  retry-budget:                             # shared library token bucket
+    ext-payment-switch: { ratio: 0.10, min-retries-per-second: 2, max-tokens: 10 }
+    ext-messaging-notify: { ratio: 0.10, min-retries-per-second: 2, max-tokens: 10 }

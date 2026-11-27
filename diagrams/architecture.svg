@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1460" viewBox="0 0 1900 1460">
+<defs>
+<marker id="arrow-be185d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#be185d"/></marker>
+<marker id="arrow-ea580c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/></marker>
+<marker id="arrow-7c3aed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker>
+<marker id="arrow-111827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111827"/></marker>
+<marker id="arrow-9aa5b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker>
+</defs>
+<rect x="0" y="0" width="1900" height="1460" rx="0" fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-width="1.5"/>
+<text x="30" y="38" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="start">t1dx – Tier 1 digital service · Selected cloud: AWS</text>
+<text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="start">Warm standby: primary ap-southeast-5 (Malaysia) → recovery ap-southeast-1 (Singapore) · RTO 45 min (target 25) · RPO 5 min · CUJ availability 99.99%</text>
+<rect x="1320" y="80" width="550" height="118" rx="6" fill="#fafafa" fill-opacity="1" stroke="#d0d5dd" stroke-width="1.5"/>
+<text x="1332" y="102" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="start">Legend</text>
+<path d="M1334,122 L1384,122" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#arrow-111827)"/>
+<text x="1392" y="127" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">sync request (numbered)</text>
+<path d="M1334,146 L1384,146" fill="none" stroke="#111827" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-111827)"/>
+<text x="1392" y="151" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">async / standby path</text>
+<path d="M1334,170 L1384,170" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="2 4" marker-end="url(#arrow-7c3aed)"/>
+<text x="1392" y="175" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">cross-Region replication</text>
+<path d="M1600,122 L1650,122" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow-ea580c)"/>
+<text x="1658" y="127" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">recovery control</text>
+<rect x="1600" y="138" width="50" height="18" rx="3" fill="none" fill-opacity="1" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="8 5"/>
+<text x="1658" y="152" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">trust boundary (TBn)</text>
+<rect x="1600" y="164" width="50" height="18" rx="3" fill="#f5f8ff" fill-opacity="1" stroke="#1d4ed8" stroke-width="2.5"/>
+<text x="1658" y="178" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">failure domain (Region/AZ)</text>
+<rect x="30" y="80" width="1270" height="110" rx="6" fill="#fafafa" fill-opacity="1" stroke="#d0d5dd" stroke-width="1.5"/>
+<text x="44" y="102" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="start">Internet (untrusted)</text>
+<rect x="560" y="98" width="340" height="76" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="730.0" y="133.175" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Customers</text>
+<text x="730.0" y="155.32500000000002" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">Mobile app + web · traceparent + Idempotency-Key</text>
+<rect x="60" y="112" width="300" height="62" rx="8" fill="#f8fafc" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="210.0" y="140.175" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">CloudWatch RUM</text>
+<text x="210.0" y="162.32500000000002" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">real-user signals (web + mobile)</text>
+<rect x="960" y="112" width="320" height="62" rx="8" fill="#f8fafc" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="1120.0" y="140.175" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Synthetics canaries</text>
+<text x="1120.0" y="162.32500000000002" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">t1dx-canary-cuj-apse5 / -apse1</text>
+<rect x="30" y="214" width="1840" height="128" rx="8" fill="#fff7ed" fill-opacity="1" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="9 6"/>
+<rect x="44" y="220" width="262.20000000000005" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="53" y="236" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB1  Internet → AWS edge (global)</text>
+<rect x="470" y="246" width="520" height="86" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="730.0" y="277.725" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">t1dx-cf-edge · Amazon CloudFront</text>
+<text x="730.0" y="299.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">AWS WAF (managed + rate rules) · Shield Advanced · TLS 1.2+</text>
+<text x="730.0" y="316.77500000000003" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">API behaviour: no cache · origin connection attempts = 1</text>
+<rect x="50" y="246" width="380" height="86" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="240.0" y="277.725" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Amazon Route 53 (public zone)</text>
+<text x="240.0" y="299.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">api-origin.t1dx.example · failover records</text>
+<text x="240.0" y="316.77500000000003" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">RECOVERY_CONTROL health checks</text>
+<rect x="1040" y="246" width="470" height="86" rx="8" fill="#ffffff" fill-opacity="1" stroke="#ea580c" stroke-width="1.5"/>
+<text x="1275.0" y="277.725" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">ARC routing control · t1dx-arc-cluster</text>
+<text x="1275.0" y="299.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">t1dx-rc-apse5 = ON · t1dx-rc-apse1 = OFF</text>
+<text x="1275.0" y="316.77500000000003" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">safety rule t1dx-arc-atleast-one-on · 5-Region data plane</text>
+<rect x="1530" y="246" width="320" height="86" rx="8" fill="#ffffff" fill-opacity="1" stroke="#ea580c" stroke-width="1.5"/>
+<text x="1690.0" y="277.725" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">ARC Region switch</text>
+<text x="1690.0" y="299.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">plan t1dx-region-switch</text>
+<text x="1690.0" y="316.77500000000003" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">executed from Region being activated</text>
+<path d="M730,174 L730,244" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#arrow-111827)"/>
+<circle cx="752" cy="210" r="13" fill="#111827"/>
+<text x="752" y="215" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">1</text>
+<path d="M470,289 L432,289" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#arrow-111827)"/>
+<circle cx="451" cy="271" r="13" fill="#111827"/>
+<text x="451" y="276" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">2</text>
+<path d="M1040,300 L1015,300 L1015,337 L240,337 L240,334" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow-ea580c)"/>
+<text x="880" y="356" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#ea580c" text-anchor="end">routing-control state drives DNS answer</text>
+<rect x="30" y="372" width="860" height="700" rx="10" fill="#f5f8ff" fill-opacity="1" stroke="#1d4ed8" stroke-width="2.5"/>
+<text x="46" y="398" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" font-style="normal" fill="#1d4ed8" text-anchor="start">Region ap-southeast-5 (Malaysia)</text>
+<text x="874" y="398" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1d4ed8" text-anchor="end">PRIMARY · ACTIVE</text>
+<text x="46" y="418" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="italic" fill="#52606d" text-anchor="start">Failure domain: Region · 3 AZs</text>
+<rect x="46" y="430" width="195.60000000000002" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="55" y="446" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB2  edge → regional API</text>
+<rect x="280" y="430" width="590" height="58" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="575.0" y="456.175" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">t1dx-api-apse5 · API Gateway REST (Regional)</text>
+<text x="575.0" y="478.325" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">regional WAF (CloudFront-only header) · per-route throttling · integration timeout 8 s</text>
+<rect x="44" y="504" width="832" height="552" rx="8" fill="#ffffff" fill-opacity="0.6" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="9 6"/>
+<rect x="56" y="510" width="351.0" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="65" y="526" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB3  private VPC (no public workload subnets)</text>
+<rect x="63.0" y="538" width="260.6666666666667" height="508" rx="6" fill="none" fill-opacity="1" stroke="#9aa5b1" stroke-width="1.2" stroke-dasharray="3 4"/>
+<text x="193.33333333333334" y="556" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="middle">AZ a</text>
+<rect x="329.6666666666667" y="538" width="260.6666666666667" height="508" rx="6" fill="none" fill-opacity="1" stroke="#9aa5b1" stroke-width="1.2" stroke-dasharray="3 4"/>
+<text x="460.0" y="556" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="middle">AZ b</text>
+<rect x="596.3333333333334" y="538" width="260.6666666666667" height="508" rx="6" fill="none" fill-opacity="1" stroke="#9aa5b1" stroke-width="1.2" stroke-dasharray="3 4"/>
+<text x="726.6666666666667" y="556" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="middle">AZ c</text>
+<rect x="70" y="566" width="780" height="40" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="460.0" y="591.25" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">VPC Link → internal NLB (pod IP targets, cross-zone)</text>
+<rect x="70" y="620" width="780" height="200" rx="8" fill="#e0f2fe" fill-opacity="1" stroke="#0369a1" stroke-width="1.8"/>
+<text x="82" y="642" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#0369a1" text-anchor="start">t1dx-eks-apse5 · Amazon EKS</text>
+<text x="838" y="642" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="end">100% capacity</text>
+<rect x="80.0" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="171.25" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">auth-svc</text>
+<rect x="272.5" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="363.75" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">account-svc</text>
+<rect x="465.0" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="556.25" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">notification-svc</text>
+<rect x="657.5" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="748.75" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">messaging-adapter</text>
+<rect x="80.0" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="171.25" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">payment-adapter</text>
+<rect x="272.5" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="363.75" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">reconciliation-job</text>
+<rect x="465.0" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="556.25" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">transfer-svc</text>
+<rect x="657.5" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2"/>
+<text x="748.75" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">outbox-relay</text>
+<text x="82" y="664" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Karpenter (zonal-shift aware) · PDB + topology spread · HPA/KEDA · PriorityClass t1dx-critical</text>
+<text x="82" y="683" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">ARC zonal autoshift (EKS + NLB) · EKS Pod Identity · NetworkPolicies · Resilience4j breakers</text>
+<text x="82" y="702" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="start">OTel → CloudWatch Observability add-on (ADOT) · Application Signals</text>
+<rect x="70" y="832" width="321.40000000000003" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="79" y="848" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB4  workload → data (IAM auth, TLS, KMS)</text>
+<rect x="70" y="858" width="514.8000000000001" height="34" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="327.40000000000003" y="879.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">RDS Proxy (IAM auth) → t1dx-aurora-apse5 cluster</text>
+<rect x="600.4000000000001" y="858" width="249.6" height="34" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.5"/>
+<text x="725.2" y="879.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">t1dx-msk-apse5 (IAM + TLS)</text>
+<rect x="72.0" y="902" width="242.66666666666669" height="34" rx="8" fill="#ede9fe" fill-opacity="1" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="193.33333333333334" y="924" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Aurora writer</text>
+<rect x="72.0" y="942" width="242.66666666666669" height="30" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.2"/>
+<text x="193.33333333333334" y="962" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="middle">MSK broker 1</text>
+<rect x="338.6666666666667" y="902" width="242.66666666666669" height="34" rx="8" fill="#ede9fe" fill-opacity="1" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="460.0" y="924" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Aurora reader</text>
+<rect x="338.6666666666667" y="942" width="242.66666666666669" height="30" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.2"/>
+<text x="460.0" y="962" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="middle">MSK broker 2</text>
+<rect x="605.3333333333334" y="942" width="242.66666666666669" height="30" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.2"/>
+<text x="726.6666666666667" y="962" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="middle">MSK broker 3</text>
+<text x="623.3333333333334" y="924" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#6d28d9" text-anchor="start">t1dx-aurora-apse5</text>
+<rect x="70" y="986" width="780" height="52" rx="8" fill="#ffffff" fill-opacity="1" stroke="#c2410c" stroke-width="1.5"/>
+<text x="460.0" y="1008.8" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Egress: AWS Network Firewall (domain/IP allowlist) → NAT GW</text>
+<text x="460.0" y="1030.6" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">static EIPs (apse5) pre-registered at both providers · mTLS client certs (Secrets Manager)</text>
+<rect x="1010" y="372" width="860" height="700" rx="10" fill="#f7f7fb" fill-opacity="1" stroke="#1d4ed8" stroke-width="2.5"/>
+<text x="1026" y="398" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" font-style="normal" fill="#1d4ed8" text-anchor="start">Region ap-southeast-1 (Singapore)</text>
+<text x="1854" y="398" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="end">RECOVERY · WARM STANDBY</text>
+<text x="1026" y="418" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="italic" fill="#52606d" text-anchor="start">Failure domain: Region · 3 AZs</text>
+<rect x="1026" y="430" width="195.60000000000002" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="1035" y="446" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB2  edge → regional API</text>
+<rect x="1260" y="430" width="590" height="58" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="1555.0" y="456.175" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">t1dx-api-apse1 · API Gateway REST (Regional)</text>
+<text x="1555.0" y="478.325" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">regional WAF (CloudFront-only header) · per-route throttling · integration timeout 8 s</text>
+<rect x="1024" y="504" width="832" height="552" rx="8" fill="#ffffff" fill-opacity="0.6" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="9 6"/>
+<rect x="1036" y="510" width="351.0" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="1045" y="526" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB3  private VPC (no public workload subnets)</text>
+<rect x="1043.0" y="538" width="260.6666666666667" height="508" rx="6" fill="none" fill-opacity="1" stroke="#9aa5b1" stroke-width="1.2" stroke-dasharray="3 4"/>
+<text x="1173.3333333333333" y="556" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="middle">AZ a</text>
+<rect x="1309.6666666666667" y="538" width="260.6666666666667" height="508" rx="6" fill="none" fill-opacity="1" stroke="#9aa5b1" stroke-width="1.2" stroke-dasharray="3 4"/>
+<text x="1440.0" y="556" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="middle">AZ b</text>
+<rect x="1576.3333333333335" y="538" width="260.6666666666667" height="508" rx="6" fill="none" fill-opacity="1" stroke="#9aa5b1" stroke-width="1.2" stroke-dasharray="3 4"/>
+<text x="1706.6666666666667" y="556" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="middle">AZ c</text>
+<rect x="1050" y="566" width="780" height="40" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="1440.0" y="591.25" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">VPC Link → internal NLB (pod IP targets, cross-zone)</text>
+<rect x="1050" y="620" width="780" height="200" rx="8" fill="#e0f2fe" fill-opacity="1" stroke="#0369a1" stroke-width="1.8"/>
+<text x="1062" y="642" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#0369a1" text-anchor="start">t1dx-eks-apse1 · Amazon EKS</text>
+<text x="1818" y="642" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="end">30% running · 60% ODCR · scales on switch</text>
+<rect x="1060.0" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1151.25" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">auth-svc</text>
+<rect x="1252.5" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1343.75" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">account-svc</text>
+<rect x="1445.0" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1536.25" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">notification-svc</text>
+<rect x="1637.5" y="716" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1728.75" y="738" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">messaging-adapter</text>
+<rect x="1060.0" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1151.25" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">payment-adapter</text>
+<rect x="1252.5" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1343.75" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">reconciliation-job</text>
+<rect x="1445.0" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1536.25" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">transfer-svc</text>
+<rect x="1637.5" y="760" width="182.5" height="34" rx="6" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="1728.75" y="782" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">outbox-relay</text>
+<text x="1062" y="664" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Karpenter (zonal-shift aware) · PDB + topology spread · HPA/KEDA · PriorityClass t1dx-critical</text>
+<text x="1062" y="683" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">ARC zonal autoshift (EKS + NLB) · EKS Pod Identity · NetworkPolicies · Resilience4j breakers</text>
+<text x="1062" y="702" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="start">OTel → CloudWatch Observability add-on (ADOT) · Application Signals</text>
+<rect x="1050" y="832" width="321.40000000000003" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="1059" y="848" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB4  workload → data (IAM auth, TLS, KMS)</text>
+<rect x="1050" y="858" width="514.8000000000001" height="34" rx="8" fill="#ffffff" fill-opacity="1" stroke="#232f3e" stroke-width="1.5"/>
+<text x="1307.4" y="879.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">RDS Proxy (IAM auth) → t1dx-aurora-apse1 cluster</text>
+<rect x="1580.4" y="858" width="249.6" height="34" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.5"/>
+<text x="1705.2" y="879.875" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">t1dx-msk-apse1 (IAM + TLS)</text>
+<rect x="1052.0" y="902" width="242.66666666666669" height="34" rx="8" fill="#ede9fe" fill-opacity="1" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="1173.3333333333333" y="924" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Aurora secondary (writer-ready)</text>
+<rect x="1052.0" y="942" width="242.66666666666669" height="30" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.2"/>
+<text x="1173.3333333333333" y="962" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="middle">MSK broker 1</text>
+<rect x="1318.6666666666667" y="902" width="242.66666666666669" height="34" rx="8" fill="#ede9fe" fill-opacity="1" stroke="#6d28d9" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="1440.0" y="924" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">reader added on switch</text>
+<rect x="1318.6666666666667" y="942" width="242.66666666666669" height="30" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.2"/>
+<text x="1440.0" y="962" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="middle">MSK broker 2</text>
+<rect x="1585.3333333333335" y="942" width="242.66666666666669" height="30" rx="8" fill="#fef3c7" fill-opacity="1" stroke="#b45309" stroke-width="1.2"/>
+<text x="1706.6666666666667" y="962" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="middle">MSK broker 3</text>
+<text x="1603.3333333333335" y="924" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#6d28d9" text-anchor="start">t1dx-aurora-apse1</text>
+<rect x="1050" y="986" width="780" height="52" rx="8" fill="#ffffff" fill-opacity="1" stroke="#c2410c" stroke-width="1.5"/>
+<text x="1440.0" y="1008.8" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Egress: AWS Network Firewall (domain/IP allowlist) → NAT GW</text>
+<text x="1440.0" y="1030.6" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">static EIPs (apse1) pre-registered at both providers · mTLS client certs (Secrets Manager)</text>
+<path d="M600,332 L600,400 L575.0,400 L575.0,430" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#arrow-111827)"/>
+<circle cx="620" cy="380" r="13" fill="#111827"/>
+<text x="620" y="385" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">3</text>
+<path d="M900,332 L900,364 L1555.0,364 L1555.0,430" fill="none" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-9aa5b1)"/>
+<text x="1200" y="358" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="start">after Region switch (standby path)</text>
+<path d="M1690,332 L1690,372" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow-ea580c)"/>
+<text x="1700" y="360" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#ea580c" text-anchor="start">activate apse1</text>
+<path d="M550,488 L550,566" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#arrow-111827)"/>
+<path d="M550,606 L550,620" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#arrow-111827)"/>
+<path d="M1530,488 L1530,566" fill="none" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-9aa5b1)"/>
+<path d="M1530,606 L1530,620" fill="none" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-9aa5b1)"/>
+<circle cx="572" cy="527.0" r="13" fill="#111827"/>
+<text x="572" y="532.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">4</text>
+<path d="M526.25,794 L526.25,858" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#arrow-111827)"/>
+<circle cx="548.25" cy="816" r="13" fill="#111827"/>
+<text x="548.25" y="821" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">5</text>
+<path d="M748.75,794 L748.75,858" fill="none" stroke="#111827" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-111827)"/>
+<circle cx="770.75" cy="816" r="13" fill="#111827"/>
+<text x="770.75" y="821" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">6</text>
+<path d="M884,919 L1016,919" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="2 4" marker-end="url(#arrow-7c3aed)"/>
+<path d="M884,957 L1016,957" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="2 4" marker-end="url(#arrow-7c3aed)"/>
+<path d="M884,680 L1016,680" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="2 4" marker-end="url(#arrow-7c3aed)"/>
+<rect x="894" y="582" width="112" height="86" rx="6" fill="#fff" fill-opacity="1" stroke="#7c3aed" stroke-width="1"/>
+<text x="950" y="600" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#7c3aed" text-anchor="middle">R3</text>
+<text x="950" y="617" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#7c3aed" text-anchor="middle">ECR images</text>
+<text x="950" y="634" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#7c3aed" text-anchor="middle">Secrets Mgr</text>
+<text x="950" y="651" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#7c3aed" text-anchor="middle">KMS MRK</text>
+<rect x="894" y="849" width="112" height="60" rx="6" fill="#fff" fill-opacity="1" stroke="#7c3aed" stroke-width="1"/>
+<text x="950" y="867" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#7c3aed" text-anchor="middle">R1</text>
+<text x="950" y="884" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#7c3aed" text-anchor="middle">Aurora Global</text>
+<text x="950" y="901" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#7c3aed" text-anchor="middle">DB  (&lt; 1 s)</text>
+<rect x="894" y="967" width="112" height="60" rx="6" fill="#fff" fill-opacity="1" stroke="#7c3aed" stroke-width="1"/>
+<text x="950" y="985" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#7c3aed" text-anchor="middle">R2</text>
+<text x="950" y="1002" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#7c3aed" text-anchor="middle">MSK Replicator</text>
+<text x="950" y="1019" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#7c3aed" text-anchor="middle">+ offset sync</text>
+<text x="950" y="1060" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#6d28d9" text-anchor="middle">t1dx-aurora-global</text>
+<rect x="330" y="1100" width="1240" height="124" rx="8" fill="#fdf2f8" fill-opacity="1" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="9 6"/>
+<rect x="344" y="1106" width="447.20000000000005" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="353" y="1122" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB5  VPC → external providers (third-party failure domain)</text>
+<rect x="420" y="1138" width="440" height="60" rx="8" fill="#ffffff" fill-opacity="1" stroke="#be185d" stroke-width="1.5"/>
+<text x="640.0" y="1165.175" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Provider A · ext-payment-switch</text>
+<text x="640.0" y="1187.325" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">real-time payments · idempotent API · status query</text>
+<rect x="1040" y="1138" width="440" height="60" rx="8" fill="#ffffff" fill-opacity="1" stroke="#be185d" stroke-width="1.5"/>
+<text x="1260.0" y="1165.175" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1f2933" text-anchor="middle">Provider B · ext-messaging</text>
+<text x="1260.0" y="1187.325" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="middle">SMS OTP + push · callbacks via API GW</text>
+<path d="M460.0,1038 L460.0,1086 L830,1086 L830,1136" fill="none" stroke="#111827" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-111827)"/>
+<circle cx="438.0" cy="1054" r="13" fill="#111827"/>
+<text x="438.0" y="1059" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">7</text>
+<path d="M620.0,1038 L620.0,1078 L1240,1078 L1240,1136" fill="none" stroke="#111827" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-111827)"/>
+<circle cx="642.0" cy="1054" r="13" fill="#111827"/>
+<text x="642.0" y="1059" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#fff" text-anchor="middle">8</text>
+<path d="M1440.0,1038 L1440.0,1086 L1420,1086 L1420,1136" fill="none" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-9aa5b1)"/>
+<text x="1452.0" y="1082" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#52606d" text-anchor="start">standby egress (EIPs allowlisted)</text>
+<text x="950" y="1216" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#be185d" text-anchor="middle">mTLS · per-provider circuit breaker + bulkhead · retry budget 10% · timeouts 3 s / 2 s</text>
+<rect x="30" y="1250" width="1840" height="196" rx="8" fill="#f8fafc" fill-opacity="1" stroke="#d0d5dd" stroke-width="1.5"/>
+<text x="44" y="1274" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#52606d" text-anchor="start">Shared accounts (AWS Organizations + Control Tower) · present in both Regions</text>
+<rect x="1500" y="1258" width="166.0" height="22" rx="4" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.2"/>
+<text x="1509" y="1274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">TB6  operators → AWS</text>
+<rect x="40.0" y="1290" width="437.5" height="146" rx="8" fill="#fff" fill-opacity="1" stroke="#0369a1" stroke-width="1.6"/>
+<text x="52.0" y="1314" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#0369a1" text-anchor="start">Observability account</text>
+<text x="52.0" y="1338" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">CloudWatch cross-account observability</text>
+<text x="52.0" y="1360" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Application Signals SLOs · burn-rate alarms</text>
+<text x="52.0" y="1382" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Logs · Transaction Search · Synthetics</text>
+<text x="52.0" y="1404" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Amazon Managed Prometheus + Grafana</text>
+<rect x="497.5" y="1290" width="437.5" height="146" rx="8" fill="#fff" fill-opacity="1" stroke="#15803d" stroke-width="1.6"/>
+<text x="509.5" y="1314" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#15803d" text-anchor="start">Security + log archive</text>
+<text x="509.5" y="1338" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">CloudTrail org trail · AWS Config</text>
+<text x="509.5" y="1360" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">GuardDuty (EKS, RDS) · Security Hub</text>
+<text x="509.5" y="1382" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">S3 Object Lock: t1dx-incident-evidence</text>
+<text x="509.5" y="1404" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">CloudWatch Logs data protection (PII mask)</text>
+<rect x="955.0" y="1290" width="437.5" height="146" rx="8" fill="#fff" fill-opacity="1" stroke="#c2410c" stroke-width="1.6"/>
+<text x="967.0" y="1314" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#c2410c" text-anchor="start">Operator access</text>
+<text x="967.0" y="1338" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">IAM Identity Center · MFA</text>
+<text x="967.0" y="1360" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">break-glass roles (both Regions)</text>
+<text x="967.0" y="1382" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">SCPs · recovery roles pre-provisioned</text>
+<text x="967.0" y="1404" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">AWS Health → EventBridge</text>
+<rect x="1412.5" y="1290" width="437.5" height="146" rx="8" fill="#fff" fill-opacity="1" stroke="#be185d" stroke-width="1.6"/>
+<text x="1424.5" y="1314" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#be185d" text-anchor="start">Alert routing (hybrid, justified)</text>
+<text x="1424.5" y="1338" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Alarms → EventBridge / SNS t1dx-page-&lt;team&gt;</text>
+<text x="1424.5" y="1360" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">→ bank paging / ITSM (SaaS)</text>
+<text x="1424.5" y="1382" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Amazon Q Developer in chat apps</text>
+<text x="1424.5" y="1404" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#1f2933" text-anchor="start">Incident Manager closed to new customers</text>
+</svg>

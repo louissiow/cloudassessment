@@ -1,0 +1,6 @@
+.terraform/
+*.tfstate*
+.terraform.lock.hcl
+terraform/observability/build/
+.DS_Store
+__pycache__/

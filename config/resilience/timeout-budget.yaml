@@ -1,0 +1,55 @@
+# Deadline budget per hop for POST /transfers (CUJ-03) and CUJ-01.
+# Rule: each hop's timeout < its caller's. See docs/04-resilience-architecture.md section 2.
+# Retries: only the layer marked retry_owner: true may retry a dependency.
+cuj: CUJ-03
+hops:
+  - hop: mobile-app
+    total_timeout_ms: 10000
+    retries: { max_attempts: 2, reuse_idempotency_key: true, honour_retry_after: true }
+    retry_owner: false            # user-intent retry only, budget-limited
+  - hop: t1dx-cf-edge             # CloudFront origin settings for the API behaviour
+    origin_connection_attempts: 1 # default 3 - removes hidden edge retries
+    origin_connection_timeout_s: 3
+    origin_response_timeout_s: 9  # > API GW integration timeout
+    retry_owner: false
+  - hop: t1dx-api-apse5           # same for t1dx-api-apse1
+    integration_timeout_ms: 8000  # default 29000
+    retry_owner: false
+  - hop: transfer-svc
+    server_deadline_ms: 7000
+    reject_if_remaining_deadline_below_ms: 100
+    deadline_header: x-deadline-ms
+    retry_owner: false
+  - hop: transfer-svc->rds-proxy->t1dx-aurora
+    connection_acquire_timeout_ms: 500
+    statement_timeout_ms: 2000
+    retry_on: [aurora-failover-error-codes]
+    retry_owner: true
+    retries: { max_attempts: 2, backoff: full-jitter, base_ms: 100, cap_ms: 1000 }
+  - hop: outbox-relay->t1dx-msk
+    delivery_timeout_ms: 30000
+    request_timeout_ms: 5000
+    acks: all
+    enable_idempotence: true
+    retry_owner: true             # Kafka producer internal retries, bounded by delivery timeout
+  - hop: payment-adapter->ext-payment-switch
+    connect_timeout_ms: 500
+    response_timeout_ms: 3000
+    retry_owner: true
+    retries:
+      max_attempts: 2
+      backoff: full-jitter
+      base_ms: 100
+      cap_ms: 1000
+      retry_budget_ratio: 0.10
+      before_retry_on_timeout: query-provider-status   # ambiguous result - never blind retry
+  - hop: messaging-adapter->ext-messaging
+    connect_timeout_ms: 500
+    response_timeout_ms: 2000
+    retry_owner: true
+    retries: { max_attempts: 2, backoff: full-jitter, base_ms: 100, cap_ms: 1000, retry_budget_ratio: 0.10 }
+  - hop: auth-svc->messaging-adapter   # CUJ-01 OTP on new-device login
+    response_timeout_ms: 2500
+    retry_owner: false            # OTP is never retried. On failure auth-svc offers in-app approval (docs/04 section 5)
+aws_sdk:
+  retry_mode: standard            # adaptive for high-volume SDK paths

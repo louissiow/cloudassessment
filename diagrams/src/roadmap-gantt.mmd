@@ -1,0 +1,31 @@
+gantt
+  title 90-day reliability roadmap, Day 1 is 4 Jan 2027
+  dateFormat YYYY-MM-DD
+  axisFormat %d %b
+  section Phase 1 Detect
+  B04 Alert hygiene : b04, 2027-01-04, 10d
+  B03 CUJ SLIs and burn-rate pages : b03, 2027-01-07, 21d
+  B05 Canaries and business signals : b05, 2027-01-18, 10d
+  B10 Incident command : b10, 2027-01-11, 10d
+  B19 Governance : b19, 2027-01-04, 25d
+  section Stop the storms
+  B01 Edge and API timeouts : b01, 2027-01-11, 7d
+  B02 Retry budget and breakers : b02, 2027-01-18, 28d
+  B16 RDS Proxy : b16, 2027-01-25, 10d
+  B15 Cert and secret expiry : b15, 2027-01-11, 7d
+  section Phase 2 Protect money
+  B06 Idempotency enforcement : b06, 2027-02-03, 21d
+  B12 Retry topics and DLQ : b12, 2027-02-08, 21d
+  B14 Zonal resilience : b14, 2027-02-03, 10d
+  section Prove DR
+  B09 L0 tabletop : milestone, m1, 2027-01-28, 0d
+  B07 ARC and Region switch plan : b07, 2027-01-25, 35d
+  B08 DR gap fixes : b08, 2027-02-08, 21d
+  B09 L1 staging faults : b09a, 2027-02-12, 12d
+  B09 L2 staging Region switch : milestone, m2, 2027-03-04, 0d
+  section Phase 3 Sustain
+  B17 Progressive delivery : b17, 2027-03-05, 21d
+  B13 Load shedding : b13, 2027-03-05, 21d
+  B11 Outbox for CUJ-03 : b11, 2027-02-17, 42d
+  B18 Toil automation : b18, 2027-03-08, 21d
+  B09 L3 prod switchover : milestone, m3, 2027-03-29, 0d

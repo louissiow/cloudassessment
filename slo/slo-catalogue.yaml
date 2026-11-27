@@ -1,0 +1,126 @@
+# SLO catalogue - Tier 1 digital service (t1dx)
+# Selected cloud: AWS. Source of truth for docs/02-sli-slo-specification.md
+# and terraform/observability/slo_burn_rate_alarms.tf.
+version: 1
+service_prefix: t1dx
+window: 30d-rolling
+regions:
+  primary: ap-southeast-5
+  recovery: ap-southeast-1
+
+valid_request_exclusions:          # client-caused 4xx are not counted as valid
+  status: [400, 401, 403, 404, 409, 422]
+bad_request_definition:
+  status_ranges: ["5xx"]
+  status: [429]                    # shed or throttled customers are failed customers
+
+sli_source:
+  primary:
+    type: apigateway-access-logs
+    log_group: /aws/apigateway/t1dx-api-{region}/access
+    metric_namespace: t1dx/SLI
+    metrics: [SliTotal, SliBad]
+    dimensions: [route, method]      # routes map to CUJs below; Region = deployment Region
+  secondary:
+    type: cloudwatch-synthetics
+    canaries: [t1dx-canary-cuj-apse5, t1dx-canary-cuj-apse1]
+  cross_check:
+    type: cloudfront-metrics
+    distribution: t1dx-cf-edge
+    region: us-east-1
+
+burn_rate_alerts:                  # multi-window, multi-burn-rate
+  - name: fast
+    long_window: 1h
+    short_window: 5m
+    burn_rate: 14.4
+    action: page
+  - name: slow
+    long_window: 6h
+    short_window: 30m
+    burn_rate: 6
+    action: page
+  - name: leak
+    long_window: 3d
+    short_window: 6h
+    burn_rate: 1
+    action: ticket
+min_requests_short_window: 500     # below this, synthetic canary alarms carry paging
+
+slos:
+  - id: slo-cuj01-avail
+    cuj: CUJ-01
+    name: Login availability
+    owner_team: identity
+    routes: ["POST /auth/login", "POST /auth/otp/verify"]
+    type: availability
+    target: 99.99
+  - id: slo-cuj01-latency
+    cuj: CUJ-01
+    name: Login latency
+    owner_team: identity
+    type: latency
+    threshold_ms: 1500
+    target: 99.0
+  - id: slo-cuj02-avail
+    cuj: CUJ-02
+    name: Balance availability
+    owner_team: accounts
+    routes: ["GET /accounts/{id}", "GET /accounts/{id}/transactions"]
+    type: availability
+    target: 99.99
+  - id: slo-cuj02-latency
+    cuj: CUJ-02
+    name: Balance latency
+    owner_team: accounts
+    type: latency
+    threshold_ms: 800
+    target: 99.0
+  - id: slo-cuj03a-accept
+    cuj: CUJ-03
+    name: Transfer accepted
+    owner_team: payments
+    routes: ["POST /transfers"]
+    type: availability
+    good_status: [201, 202]
+    target: 99.99
+  - id: slo-cuj03a-latency
+    cuj: CUJ-03
+    name: Transfer accept latency
+    owner_team: payments
+    type: latency
+    threshold_ms: 1000
+    target: 99.0
+  - id: slo-cuj03b-complete
+    cuj: CUJ-03
+    name: Transfer completed within 30 s
+    owner_team: payments
+    type: freshness
+    source: { namespace: t1dx/Payments, metric: TransferFinalisedWithin30s }
+    threshold_s: 30
+    target: 99.9
+    depends_on_external: ext-payment-switch
+  - id: slo-cuj04-notify
+    cuj: CUJ-04
+    name: Notification handed to provider within 60 s
+    owner_team: messaging
+    type: freshness
+    source: { namespace: t1dx/Messaging, metric: NotificationWithin60s }
+    threshold_s: 60
+    target: 99.9
+    depends_on_external: ext-messaging
+  - id: slo-canary-cuj
+    cuj: [CUJ-01, CUJ-02, CUJ-03]
+    name: Synthetic journeys per Region
+    owner_team: sre
+    type: synthetic
+    evaluation: period-based-1m
+    target: 99.9
+  - id: slo-rpo
+    name: Critical data set RPO
+    owner_team: data-platform
+    type: freshness
+    source: { namespace: AWS/RDS, metric: AuroraGlobalDBRPOLag, cluster: t1dx-aurora-apse1, note: "published by the secondary cluster only" }
+    threshold_ms: 300000
+    alarms: { warn_ms: 60000, page_ms: 180000 }
+    target: 100
